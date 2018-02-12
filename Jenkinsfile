@@ -53,9 +53,9 @@ pipeline {
 	}
 	post {
 		always {
-			junit 'tests.xml'
+			junit allowEmptyResults: true, testResults: 'tests.xml'
 			warnings parserConfigurations: [[parserName: 'Go Lint', pattern: 'golint.txt'], [parserName: 'Go Vet', pattern: 'govet.txt']], unstableTotalAll: '0'
-			publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'test/reports', reportFiles: 'coverage.html', reportName: 'Go Coverage Report HTML', reportTitles: ''])
+			publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'test/reports', reportFiles: 'coverage.html', reportName: 'Go Coverage Report HTML', reportTitles: ''])
 			step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
 			cleanWs()
 		}
