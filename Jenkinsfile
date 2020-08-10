@@ -27,7 +27,7 @@ pipeline {
 				echo 'Linting..'
 				sh 'PATH=$PATH:$GOBIN golint | tee golint.txt || true'
 				sh 'go vet | tee govet.txt || true'
-				warnings parserConfigurations: [[parserName: 'Go Lint', pattern: 'golint.txt'], [parserName: 'Go Vet', pattern: 'govet.txt']], unstableTotalAll: '0'
+				recordIssues qualityGates: [[threshold: 100, type: 'TOTAL', unstable: true]], tools: [goVet(pattern: 'govet.txt'), goLint(pattern: 'golint.txt')]
 			}
 		}
 		stage('Test') {
