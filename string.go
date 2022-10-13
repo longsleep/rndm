@@ -18,5 +18,5 @@ import (
 func GenerateRandomString(s int) string {
 	b := GenerateRandomBytes(s)
 
-	return base64.URLEncoding.EncodeToString(b)
+	return base64.RawURLEncoding.EncodeToString(b)
 }

@@ -20,8 +20,8 @@ func TestGenerateRandomString(t *testing.T) {
 	}()
 
 	s32 := GenerateRandomString(32)
-	if len(s32) != 44 {
+	if len(s32) != 43 {
 		// Base64 encoded without padding.
-		t.Errorf("wrong result size: got %d want 44", len(s32))
+		t.Errorf("wrong result size: got %d want 43", len(s32))
 	}
 }
