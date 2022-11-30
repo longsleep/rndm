@@ -6,4 +6,4 @@
  *
  */
 
-package rndm // import "stash.kopano.io/kgol/rndm"
+package rndm // import "github.com/longsleep/rndm"

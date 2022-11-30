@@ -1,3 +1,3 @@
-module stash.kopano.io/kgol/rndm
+module github.com/longsleep/rndm
 
 go 1.13
